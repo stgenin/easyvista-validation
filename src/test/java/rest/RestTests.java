@@ -110,6 +110,7 @@ public class RestTests {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+
     }
 
     @When("(.*) is connected to Jira with password (.*)")
