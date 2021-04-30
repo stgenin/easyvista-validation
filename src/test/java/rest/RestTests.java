@@ -147,7 +147,7 @@ public class RestTests {
 
     @Then("the incident summary in Jira is (.*)")
     public void the_incident_summary_in_Jira_is(String string) {
-        assertEquals(string, ((JSONObject) this.issueDetails.get("fields")).get("summary"));
+        assertEquals(string, "\"" +((JSONObject) this.issueDetails.get("fields")).get("summary")+"\"");
     }
 
     @Given("the incident CI in EasyVista is (.*)")
