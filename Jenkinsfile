@@ -14,7 +14,7 @@ node() {
         git branch: 'master', credentialsId: '', url: repoURL
     }
     stage ('Import Scenarios from XRay') {
-        step([$class: 'XrayExportBuilder', credentialId: '', filePath: 'src/test/resources', issues: 'MXP-70', serverInstance: 'SERVER-0ee72acd-5079-404f-8b3e-c3eb0827002a'])
+        step([$class: 'XrayExportBuilder', credentialId: '', filePath: 'src/test/resources', issues: 'MXP-71', serverInstance: 'SERVER-0ee72acd-5079-404f-8b3e-c3eb0827002a'])
     }
     stage('Cucumber Tests') {
             withMaven(maven: 'maven35') {
