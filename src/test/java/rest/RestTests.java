@@ -53,6 +53,7 @@ public class RestTests {
         evIncidentBean.setAssigned_group("Group Name");
         evIncidentBean.setMax_resolution_date("2021-06-01 18:30:23");
         evIncidentBean.setOrigin("12");
+        evIncidentBean.setImpact_id("3");
     }
 
     @Given("the incident priority in EasyVista is {string}")
@@ -147,6 +148,24 @@ public class RestTests {
     @Then("the incident summary in Jira is {string}")
     public void the_incident_summary_in_Jira_is(String string) {
         assertEquals(string, ((JSONObject) this.issueDetails.get("fields")).get("summary"));
+    }
+
+    @Given("the incident CI in EasyVista is {string}")
+    public void the_incident_CI_in_EasyVista_is(String string) {
+        evIncidentBean.setCi(string);
+    }
+
+    @Then("the incident CI parent in Jira is {string}")
+    public void the_incident_CI_parent_in_Jira_is(String string) {
+        // Write code here that turns the phrase above into concrete actions
+        String parentValue=(String)((JSONObject)(((JSONObject) this.issueDetails.get("fields")).get("customfield_10501"))).get("value");
+        assertEquals(string,parentValue);
+    }
+
+    @Then("the incident CI child in Jira is {string}")
+    public void the_incident_CI_child_in_Jira_is(String string) {
+        String childValue=(String)((JSONObject)(((JSONObject)(((JSONObject) this.issueDetails.get("fields")).get("customfield_10501"))).get("child"))).get("value");
+        assertEquals(string,childValue);
     }
 
 }
