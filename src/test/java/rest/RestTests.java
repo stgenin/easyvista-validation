@@ -140,29 +140,29 @@ public class RestTests {
         }
     }
 
-    @Then("the incident priority in Jira is {string}")
+    @Then("the incident priority in Jira is (.*)")
     public void the_incident_priority_in_Jira_is(String string) {
         assertEquals(string, ((JSONObject)(((JSONObject) this.issueDetails.get("fields")).get("customfield_10700"))).get("value"));
     }
 
-    @Then("the incident summary in Jira is {string}")
+    @Then("the incident summary in Jira is (.*)")
     public void the_incident_summary_in_Jira_is(String string) {
         assertEquals(string, ((JSONObject) this.issueDetails.get("fields")).get("summary"));
     }
 
-    @Given("the incident CI in EasyVista is {string}")
+    @Given("the incident CI in EasyVista is (.*)")
     public void the_incident_CI_in_EasyVista_is(String string) {
         evIncidentBean.setCi(string);
     }
 
-    @Then("the incident CI parent in Jira is {string}")
+    @Then("the incident CI parent in Jira is (.*)")
     public void the_incident_CI_parent_in_Jira_is(String string) {
         // Write code here that turns the phrase above into concrete actions
         String parentValue=(String)((JSONObject)(((JSONObject) this.issueDetails.get("fields")).get("customfield_10501"))).get("value");
         assertEquals(string,parentValue);
     }
 
-    @Then("the incident CI child in Jira is {string}")
+    @Then("the incident CI child in Jira is (.*)")
     public void the_incident_CI_child_in_Jira_is(String string) {
         String childValue=(String)((JSONObject)(((JSONObject)(((JSONObject) this.issueDetails.get("fields")).get("customfield_10501"))).get("child"))).get("value");
         assertEquals(string,childValue);
